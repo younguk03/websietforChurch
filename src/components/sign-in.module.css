@@ -1,0 +1,57 @@
+.signin {
+   border: 1px solid black;
+   text-align: center;
+   justify-content: center;
+   margin-top: 35px;
+   margin-left: 20%;
+   margin-right: 20%;
+}
+
+.border_line{
+   margin: 5px;
+   background: linear-gradient(to right,red,yellow, green, blue);
+   padding: 1px;
+   border:1px;
+   border-radius: 10px;
+}
+.google {
+   border: 1px solid none;
+   width: 248px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   
+   padding: 2px;
+   border-radius: 9px;
+   background-color: white;
+}
+
+.naver {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border: 1px solid rgb(255, 255, 255);
+   border-radius: 10px;
+   padding: 5px;
+   width: 250px;
+   margin: 5px;
+   background-color: #03c457;
+   color: white;
+}
+.naver_icon {
+   font-weight: 600;
+   padding-right: 8px;
+   font-size: x-large;
+}
+
+.kakao {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border: 1px solid #f9e000;
+   background-color:#f9e000;
+   border-radius: 10px;
+   width: 250px;
+   margin: 5px;
+   padding: 5px;
+}

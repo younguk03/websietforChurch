@@ -1,0 +1,33 @@
+.main {
+   margin: 0;
+}
+@media (max-width: 1000px){
+   .main {
+      width: 1000px;
+   }
+}
+
+.main2 {
+   margin-top: 50px;
+   margin-left: 10%;
+   margin-right: 10%;
+}
+
+.title{
+   font-size: 30px;
+   font-weight: 700;
+}
+.user{
+   font-size: 13px;
+   color: gray;
+}
+.categorie {
+   font-weight: bold;
+   font-size: 14px;
+}
+
+.description {
+   margin-top: 20px;
+   margin-left: 8px;
+   margin-right: 8px;
+}

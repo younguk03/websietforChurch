@@ -1,0 +1,40 @@
+.main{
+   margin: 0;
+   padding: 0;
+}
+
+@media (max-width: 1000px){
+   .main {
+      width: 1000px;
+   }
+}
+
+.main_Image {
+   height: 30%;
+}
+
+.homeboardList{
+   margin: 50px;
+   margin-left: 15%;
+   margin-right: 15%;
+   /* margin-right: 6%; */
+}
+
+.boardTitle {
+   font-size: larger;
+   font-weight: bold;
+   padding-top: 4px;
+}
+.btn1 {
+   margin-left: auto;
+   border: 1px solid;
+   padding: 5px;
+   padding-left: 10px;
+   padding-right: 10px;
+   border-radius: 25px;
+   transition: all 0.2s;
+}
+.btn1:hover {
+   color: white;
+   background-color: black;
+}

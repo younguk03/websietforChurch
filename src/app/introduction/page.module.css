@@ -1,0 +1,26 @@
+.main {
+   margin: 0;
+}
+
+@media(max-width:1200px) {
+   .main {
+      width: 1200px;
+   }
+}
+
+.menu {
+   padding: 2px;
+   margin: 10px;
+   transition: all 0.2s;
+   width: 200px;
+}
+
+.menu:hover{
+   background-color: rgb(148, 167, 187);
+   border-radius: 5px;
+}
+
+.allBoard {
+   margin-left: 10%;
+   margin-right: 10%;
+}
