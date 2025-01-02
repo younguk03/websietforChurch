@@ -43,6 +43,14 @@
    background-color: rgb(243, 247, 255);
 }
 
+.image {
+   border: 2px solid black;
+   border-radius: 100%;
+   width: 100px;
+   height: 100px;
+   margin-right: 30px;
+}
+
 .description {
    white-space: normal;
    display: -webkit-box;

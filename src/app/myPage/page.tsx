@@ -50,7 +50,7 @@ export default function Page() {
             <h1 className='text-2xl pb-3 font-bold'>My profile</h1>
             <div className={styles.profile}>
                <div>
-                  <Image src={session?.data?.user?.image ?? default_avata} width={100} height={100} className='rounded-full border-2 border-black mr-4' alt='image'/>
+                  <Image src={session?.data?.user?.image ?? default_avata} width={100} height={100} className={styles.image} alt='image'/>
                </div>
                <div className='mt-3'>
                   <p>이름: {session.data?.user?.name}</p>
