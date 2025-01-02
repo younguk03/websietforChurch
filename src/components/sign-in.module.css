@@ -1,10 +1,12 @@
 .signin {
-   border: 1px solid black;
+   border: 2px solid rgb(151, 177, 204);
+   border-radius: 5px;
    text-align: center;
    justify-content: center;
-   margin-top: 35px;
+   margin-top: 85px;
    margin-left: 20%;
    margin-right: 20%;
+   padding: 30px;
 }
 
 .border_line{

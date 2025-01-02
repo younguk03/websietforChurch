@@ -8,6 +8,7 @@ import kakao from '@/public/image/kakao_logo.png'
 export default function SignIn() {
    return (
       <div className={styles.signin}>
+         <h1 className='text-4xl font-bold pb-4'>Login</h1>
          <div className="flex flex-col items-center">
             <div className={styles.border_line}>
          <form
