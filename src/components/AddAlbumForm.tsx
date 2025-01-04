@@ -20,9 +20,9 @@ export default function AddPostForm() {
       const fileUrl = result.info?.secure_url;
       if (fileUrl && editorRef.current) {
          // 이미지 태그 삽입
-         const imgElement = `<p><img src="${fileUrl}" alt="Uploaded Image" style="max-width: 500px; max-height: 500px;" /></p><p><br/></p>`;
+         const imgElement = `<p><img src="${fileUrl}" alt="Uploaded Image" style="max-width: 800px; max-height: 800px;" /></p><p><br></p>`;
          editorRef.current.innerHTML += imgElement;
-         console.log('File uploaded successfully:', fileUrl);
+         setDescription(editorRef.current.innerHTML);
       }
    };
 

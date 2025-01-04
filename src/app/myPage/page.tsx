@@ -49,8 +49,9 @@ export default function Page() {
                </div>
                <div className='mt-3'>
                   <p>이름: {session.data?.user?.name}</p>
-                  <p>이메일:{session.data?.user?.email}</p>
-                  <p>글 작성 개수: {count}</p>
+                  <p>게시글 작성 개수: {count}</p>
+                  <p>앨범 작성 개수:</p>
+                  
                </div>
                <div className='ml-auto'>
                   <div className={styles.append1}>

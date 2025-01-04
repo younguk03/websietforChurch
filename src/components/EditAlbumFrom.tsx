@@ -30,9 +30,11 @@ export default function EditAlbumForm({
       const fileUrl = result.info?.secure_url;
       if (fileUrl && editorRef.current) {
          // 이미지 태그 삽입
-         const imgElement = `<p><img src="${fileUrl}" alt="Uploaded Image" style="max-width: 500px; max-height: 500px;" /></p><p><br/></p>`;
+         const imgElement = `<p><img src="${fileUrl}" alt="Uploaded Image" style="max-width: 800px; max-height: 800px;" /></p><p><br/></p>`;
          editorRef.current.innerHTML += imgElement;
          console.log('File uploaded successfully:', fileUrl);
+         setNewDescription(editorRef.current.innerHTML);
+
       }
    };
 
@@ -203,7 +205,7 @@ export default function EditAlbumForm({
             <div className={styles.container1}>
                <h1 className={styles.boardTitle}>앨범</h1>
                <button type="submit" className={styles.submit}>
-                  앨범 등록
+                  앨범 수정
                </button>
             </div>
             <div className={styles.container2}>

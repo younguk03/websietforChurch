@@ -3,7 +3,6 @@ import { Board } from '@/types/board'
 import React, { useEffect, useState } from 'react'
 import styles from './allAlbum.module.css'
 import Link from 'next/link'
-import Image from 'next/image'
 
 export default function HomeAlbumList() {
    const [albumData, setAlbumData] = useState<Board[]>([])
@@ -32,7 +31,7 @@ export default function HomeAlbumList() {
                      <div>
                         {/* 첫 번째 이미지 표시 */}
                         {extractFirstImage(album.description) ? (
-                           <Image
+                           <img
                               src={extractFirstImage(album.description)!}
                               alt="Album Thumbnail"
                               className="h-40 object-cover rounded-md"
