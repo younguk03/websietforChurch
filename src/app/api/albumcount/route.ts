@@ -7,7 +7,7 @@ export async function GET() {
    try {
       const session = await auth()
       await connectMongoDB();
-      const boardsCount = await Board.find({user:`${session?.user?.name}`,categorie:{$ne:'앨범'}}).countDocuments()
+      const boardsCount = await Board.find({user:`${session?.user?.name}`,categorie:'앨범'}).countDocuments()
       return NextResponse.json(boardsCount);
    } catch (error) {
       console.log(error)

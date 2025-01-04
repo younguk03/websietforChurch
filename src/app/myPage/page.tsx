@@ -10,15 +10,25 @@ import DOMPurify from 'dompurify'
 import default_avata from '@/public/default-avatar.png'
 export default function Page() {
    const session = useSession()
-   const [count, setCount] = useState<number | null>(null)
+   const [count1, setCount1] = useState<number | null>(null)
+   const [count2, setCount2] = useState<number | null>(null)
    const [boardData, setBoardData] = useState<Board[]>([])
    useEffect(() => {
       const fetchData = async () => {
          const response = await fetch('/api/writingCount')
          const data = await response.json();
-         setCount(data);
+         setCount1(data);
       }
       fetchData()
+      
+   },[])
+   useEffect(() => {
+      const fetchData3 = async () => {
+         const response = await fetch('/api/albumcount')
+         const data = await response.json();
+         setCount2(data);
+      }
+      fetchData3()
       
    },[])
    useEffect(() => {
@@ -49,8 +59,8 @@ export default function Page() {
                </div>
                <div className='mt-3'>
                   <p>이름: {session.data?.user?.name}</p>
-                  <p>게시글 작성 개수: {count}</p>
-                  <p>앨범 작성 개수:</p>
+                  <p>게시글 작성 개수: {count1}</p>
+                  <p>앨범 작성 개수: {count2}</p>
                   
                </div>
                <div className='ml-auto'>
