@@ -3,9 +3,9 @@
    padding: 0;
 }
 
-@media (max-width: 1000px){
+@media (max-width: 1200px){
    .main {
-      width: 1000px;
+      width: 1200px;
    }
 }
 
@@ -15,8 +15,8 @@
 
 .homeboardList{
    margin: 50px;
-   margin-left: 15%;
-   margin-right: 15%;
+   margin-left: 12%;
+   margin-right: 12%;
    /* margin-right: 6%; */
 }
 
@@ -37,4 +37,27 @@
 .btn1:hover {
    color: white;
    background-color: black;
+}
+
+.HomeAlbumList{
+   margin: 50px;
+   margin-left: 12%;
+   margin-right: 12%;
+   /* margin-right: 6%; */
+}
+.menu {
+   padding: 2px;
+   margin: 10px;
+   transition: all 0.2s;
+   width: 200px;
+}
+
+.menu:hover{
+   background-color: rgb(148, 167, 187);
+   border-radius: 5px;
+}
+
+.allBoard {
+   margin-left: 10%;
+   margin-right: 10%;
 }

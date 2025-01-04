@@ -1,13 +1,19 @@
+'use client'
 import Header from '@/components/Header'
 import React from 'react'
 import styles from './page.module.css'
 import AllBoard from '@/components/AllBoard'
 import Link from 'next/link'
+import Image from 'next/image'
+import icon from '@/public/image/edit_icon.png'
+import { useSession } from 'next-auth/react'
 
-export default function page() {
+
+export default function Page() {
+   const { status } = useSession()
    return (
       <div className={styles.main}>
-         <div><Header/></div>
+         <div><Header /></div>
          <div>
             <div className='flex text-center justify-center border-b border-gray-400 bg-slate-100'>
                <div className={styles.menu}><Link href={'./allBoard'}>전체</Link></div>
@@ -17,8 +23,16 @@ export default function page() {
                <div className={styles.menu}><Link href={'./active'}>청년부 활동 게시판</Link></div>
             </div>
             <div className={styles.allBoard}>
-               <h2 className='text-2xl ml-4 mt-8 font-bold'>전체</h2>
-               <AllBoard/>
+               <div className='flex ml'>
+                  <h2 className='text-2xl ml-4 font-bold'>전체</h2>
+                  {status === 'authenticated' && (
+                     <Link href={'/addBoard'} className={styles.append}>
+                        <Image src={icon} alt='write' height={20} className={styles.icon} />
+                        글쓰기</Link>
+                  )}
+
+               </div>
+               <AllBoard />
             </div>
          </div>
       </div>

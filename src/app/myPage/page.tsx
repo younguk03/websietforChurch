@@ -3,7 +3,6 @@ import Header from '@/components/Header'
 import React, { useEffect, useState } from 'react'
 import styles from './page.module.css'
 import { useSession } from 'next-auth/react'
-import { redirect } from 'next/navigation'
 import Image from 'next/image'
 import { Board } from '@/types/board'
 import Link from 'next/link'
@@ -11,10 +10,6 @@ import DOMPurify from 'dompurify'
 import default_avata from '@/public/default-avatar.png'
 export default function Page() {
    const session = useSession()
-   if (!session){
-      alert('이용불가합니다. 로그인해주세요')
-      redirect('./login')
-   }
    const [count, setCount] = useState<number | null>(null)
    const [boardData, setBoardData] = useState<Board[]>([])
    useEffect(() => {
@@ -50,20 +45,25 @@ export default function Page() {
             <h1 className='text-2xl pb-3 font-bold'>My profile</h1>
             <div className={styles.profile}>
                <div>
-                  <Image src={session?.data?.user?.image ?? default_avata} width={100} height={100} className={styles.image} alt='image'/>
+                  <Image src={session.data?.user?.image ?? default_avata} width={100} height={100} className={styles.image} alt='image'/>
                </div>
                <div className='mt-3'>
                   <p>이름: {session.data?.user?.name}</p>
                   <p>이메일:{session.data?.user?.email}</p>
                   <p>글 작성 개수: {count}</p>
                </div>
+               <div className='ml-auto'>
+                  <div className={styles.append1}>
+                  <Link href={'/addBoard'}>게시글 작성</Link>
+                  </div>
+                  <div className={styles.append1}>
+                  <Link href={'/addAlbum'}>앨범 작성</Link>
+                  </div>
+               </div>
             </div>
             <div>
-               <div className='flex mt-9'>
+               <div className='mt-9'>
                   <h1 className=' text-2xl font-bold'>내가 쓴 글</h1>
-                  <Link href={'./addBoard'} className='border pt-1 ml-auto rounded-full pl-4 pr-4 hover:bg-black hover:text-white transition-all'>글쓰기</Link>
-               </div>
-               
                {boardData.map((board) => (
                   <div key={board._id} className={styles.bigList}>
                   <Link href={`./board/${board._id}`}>
@@ -85,6 +85,7 @@ export default function Page() {
                ))}
             </div>
          </div>
+      </div>
       </div>
    )
 }

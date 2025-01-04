@@ -1,16 +1,26 @@
 'use client';
 import { useRouter } from 'next/navigation';
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styles from './addBoardForm.module.css';
-import { createBoard } from '@/actions/actions';
+import { updateBoard } from '@/actions/actions';
 import { CldUploadWidget } from 'next-cloudinary';
 import { useSession } from 'next-auth/react';
 
-export default function AddPostForm() {
+interface EditBoardFormProps {
+   id: string,
+   title: string,
+   description: string,
+}
+
+export default function EditAlbumForm({
+   id,
+   title,
+   description,
+}: EditBoardFormProps) {
    const { data: session } = useSession()
-   const [title, setTitle] = useState('');
-   const [description, setDescription] = useState('');
-   const [categorie, setCategorie] = useState('')
+   const [newTitle, setNewTitle] = useState(title);
+   const [newDescription, setNewDescription] = useState(description);
+   const categorie = '앨범'
    // const [user, setUser] = useState('');
    const user = `${session?.user?.name}`
    const editorRef = useRef<HTMLDivElement>(null);
@@ -20,7 +30,7 @@ export default function AddPostForm() {
       const fileUrl = result.info?.secure_url;
       if (fileUrl && editorRef.current) {
          // 이미지 태그 삽입
-         const imgElement = `<img src="${fileUrl}" alt="Uploaded Image" style="max-width: 500px; max-height: 500px;" /><p><br/></p>`;
+         const imgElement = `<p><img src="${fileUrl}" alt="Uploaded Image" style="max-width: 500px; max-height: 500px;" /></p><p><br/></p>`;
          editorRef.current.innerHTML += imgElement;
          console.log('File uploaded successfully:', fileUrl);
       }
@@ -30,10 +40,15 @@ export default function AddPostForm() {
    const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
       if (editorRef.current) {
-         setDescription(editorRef.current.innerHTML); // HTML 콘텐츠 저장
+         const content = editorRef.current.innerHTML.trim();
+         if (content === '') {
+            alert('내용을 입력하세요!');
+            return;
+         }
+         setNewDescription(content); // HTML 콘텐츠 저장
       }
       try {
-         await createBoard(title, description, '', categorie, user);
+         await updateBoard(id, newTitle, newDescription, '', categorie, user);
          router.push('/');
       } catch (error) {
          console.error('글 생성 중 오류', error);
@@ -170,16 +185,25 @@ export default function AddPostForm() {
       selection.removeAllRanges();
    }
 
+   useEffect(() => {
+      if (editorRef.current) {
+         editorRef.current.innerHTML = description; // 초기값 설정
+      }
+   }, [description]);
 
-
+   useEffect(() => {
+      if (editorRef.current && newDescription) {
+         editorRef.current.innerHTML = newDescription;
+      }
+   }, [newDescription]);
 
    return (
       <div className={styles.main}>
          <form onSubmit={handleSubmit}>
             <div className={styles.container1}>
-               <h1 className={styles.boardTitle}>글쓰기</h1>
+               <h1 className={styles.boardTitle}>앨범</h1>
                <button type="submit" className={styles.submit}>
-                  글 추가
+                  앨범 등록
                </button>
             </div>
             <div className={styles.container2}>
@@ -232,26 +256,12 @@ export default function AddPostForm() {
             </div>
             <div className="m-5 mr-28 ml-28">
                <div>
-                  <select
-                     name="languages"
-                     id="kategorie"
-                     className={styles.categorie}
-                     onChange={(e) => setCategorie(e.target.value)}
-                  >
-                     <option value="none"> 카테고리</option>
-                     <option value="회복의 교회 청년부 소개">회복의 교회 청년부 소개</option>
-                     <option value="목사님 칼럼">목사님 칼럼</option>
-                     <option value="신앙 성장을 위한 참고자료">
-                        신앙 성장을 위한 참고자료
-                     </option>
-                     <option value="청년부 활동 게시판">청년부 활동 게시판</option>
-                  </select>
                </div>
                <div className={styles.one}>
                   <input
                      type="text"
                      value={title}
-                     onChange={(e) => setTitle(e.target.value)}
+                     onChange={(e) => setNewTitle(e.target.value)}
                      placeholder="제목"
                      className={styles.title}
                   />
@@ -263,7 +273,11 @@ export default function AddPostForm() {
                      ref={editorRef}
                      contentEditable
                      className={styles.editor}
-                     onInput={(e) => setDescription((e.target as HTMLDivElement).innerHTML || '')}
+                     onInput={() => {
+                        if (editorRef.current) {
+                           setNewDescription(editorRef.current.innerHTML); // 업데이트된 HTML 값 저장
+                        }
+                     }}
                   />
                </div>
             </div>

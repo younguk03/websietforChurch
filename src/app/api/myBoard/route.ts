@@ -7,7 +7,10 @@ export async function GET() {
    try {
       const session = await auth()
       await connectMongoDB();
-      const userBoard = await Board.find({user:`${session?.user?.name}`}).sort({createdAt: -1})
+      const userBoard = await Board.find({
+         user: `${session?.user?.name}`,
+         categorie: { $ne: "앨범" }
+      });
       return NextResponse.json(userBoard);
    } catch (error) {
       console.log(error)

@@ -10,7 +10,7 @@ export default function AddPostForm() {
    const { data: session } = useSession()
    const [title, setTitle] = useState('');
    const [description, setDescription] = useState('');
-   const [categorie, setCategorie] = useState('')
+   const categorie = '앨범'
    // const [user, setUser] = useState('');
    const user = `${session?.user?.name}`
    const editorRef = useRef<HTMLDivElement>(null);
@@ -20,7 +20,7 @@ export default function AddPostForm() {
       const fileUrl = result.info?.secure_url;
       if (fileUrl && editorRef.current) {
          // 이미지 태그 삽입
-         const imgElement = `<img src="${fileUrl}" alt="Uploaded Image" style="max-width: 500px; max-height: 500px;" /><p><br/></p>`;
+         const imgElement = `<p><img src="${fileUrl}" alt="Uploaded Image" style="max-width: 500px; max-height: 500px;" /></p><p><br/></p>`;
          editorRef.current.innerHTML += imgElement;
          console.log('File uploaded successfully:', fileUrl);
       }
@@ -30,7 +30,12 @@ export default function AddPostForm() {
    const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
       if (editorRef.current) {
-         setDescription(editorRef.current.innerHTML); // HTML 콘텐츠 저장
+         const content = editorRef.current.innerHTML.trim();
+         if (content === '') {
+            alert('내용을 입력하세요!');
+            return;
+         }
+         setDescription(content); // HTML 콘텐츠 저장
       }
       try {
          await createBoard(title, description, '', categorie, user);
@@ -177,9 +182,9 @@ export default function AddPostForm() {
       <div className={styles.main}>
          <form onSubmit={handleSubmit}>
             <div className={styles.container1}>
-               <h1 className={styles.boardTitle}>글쓰기</h1>
+               <h1 className={styles.boardTitle}>앨범</h1>
                <button type="submit" className={styles.submit}>
-                  글 추가
+                  앨범 등록
                </button>
             </div>
             <div className={styles.container2}>
@@ -232,20 +237,6 @@ export default function AddPostForm() {
             </div>
             <div className="m-5 mr-28 ml-28">
                <div>
-                  <select
-                     name="languages"
-                     id="kategorie"
-                     className={styles.categorie}
-                     onChange={(e) => setCategorie(e.target.value)}
-                  >
-                     <option value="none"> 카테고리</option>
-                     <option value="회복의 교회 청년부 소개">회복의 교회 청년부 소개</option>
-                     <option value="목사님 칼럼">목사님 칼럼</option>
-                     <option value="신앙 성장을 위한 참고자료">
-                        신앙 성장을 위한 참고자료
-                     </option>
-                     <option value="청년부 활동 게시판">청년부 활동 게시판</option>
-                  </select>
                </div>
                <div className={styles.one}>
                   <input

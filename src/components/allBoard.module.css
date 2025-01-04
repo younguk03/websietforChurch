@@ -1,19 +1,11 @@
-.bigList {
-   background: linear-gradient(to bottom,  blue, green);
-   margin: 15px;
-   margin-left: 5px;
-   margin-right: 5px;
-   border-radius: 11px;
-   padding: 1px;
-}
 .list{
-   border: 1px solid none;
+   border: 1px solid gray;
    border-radius: 10px;
    transition: all 0.2s;
    padding: 10px;
    padding-left: 15px;
    padding-right: 15px;
-   
+   margin: 10px;
    background-color: rgb(243, 247, 255);
 }
 

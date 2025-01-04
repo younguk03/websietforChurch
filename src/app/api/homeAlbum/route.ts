@@ -5,8 +5,7 @@ import { NextResponse } from 'next/server';
 export async function GET() {
    try {
       await connectMongoDB();
-      //categorie가 앨범인것 제외하고 검색
-      const boards = await Board.find({categorie:{$ne:'앨범'}}).sort({ createdAt: -1 })
+      const boards = await Board.find({categorie:'앨범'}).sort({ createdAt: -1 }).limit(5)
       return NextResponse.json(boards);
    } catch (error) {
       console.log(error)

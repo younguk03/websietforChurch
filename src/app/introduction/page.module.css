@@ -23,4 +23,23 @@
 .allBoard {
    margin-left: 10%;
    margin-right: 10%;
+   margin-top: 40px;
+}
+
+.append {
+   margin-left: auto;
+   border: 1px solid;
+   padding: 7px;
+   padding-left: 10px;
+   padding-right: 10px;
+   border-radius: 25px;
+   display: flex;
+   transition: all 0.3s;
+}
+.append:hover {
+   background-color: #000000;
+   color: white;
+}
+.append:hover .icon {
+   filter: invert(1); /* 색상 반전 */
 }
