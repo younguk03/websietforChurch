@@ -245,7 +245,7 @@ export default function EditAlbumForm({
                   {({ open }) => (
                      <button type="button" onClick={() => open()}
                         className={styles.upload}>
-                        파일첨부
+                        이미지첨부
                      </button>
                   )}
                </CldUploadWidget>

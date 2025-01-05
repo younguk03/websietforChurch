@@ -195,7 +195,7 @@ export default function EditBoardtForm({
             <div className={styles.container1}>
                <h1 className={styles.boardTitle}>글쓰기</h1>
                <button type="submit" className={styles.submit}>
-                  글 추가
+                  수정하기
                </button>
             </div>
             <div className={styles.container2}>
@@ -241,7 +241,7 @@ export default function EditBoardtForm({
                   {({ open }) => (
                      <button type="button" onClick={() => open()}
                         className={styles.upload}>
-                        파일첨부
+                        이미지첨부
                      </button>
                   )}
                </CldUploadWidget>
