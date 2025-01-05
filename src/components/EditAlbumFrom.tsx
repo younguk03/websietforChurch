@@ -193,12 +193,6 @@ export default function EditAlbumForm({
       }
    }, [description]);
 
-   useEffect(() => {
-      if (editorRef.current && newDescription) {
-         editorRef.current.innerHTML = newDescription;
-      }
-   }, [newDescription]);
-
    return (
       <div className={styles.main}>
          <form onSubmit={handleSubmit}>

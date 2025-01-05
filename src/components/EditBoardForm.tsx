@@ -13,7 +13,7 @@ interface EditBoardFormProps {
    categorie: string
 }
 
-export default function AddPostForm({
+export default function EditBoardtForm({
    id,
    title,
    description,
@@ -34,6 +34,7 @@ export default function AddPostForm({
          const imgElement = `<img src="${fileUrl}" alt="Uploaded Image" style="max-width: 500px; max-height: 500px;" /><p><br/></p>`;
          editorRef.current.innerHTML += imgElement;
          console.log('File uploaded successfully:', fileUrl);
+         setNewDescription(editorRef.current.innerHTML);
       }
    };
 
@@ -186,12 +187,6 @@ export default function AddPostForm({
       }
    }, [description]);
 
-   useEffect(() => {
-      if (editorRef.current && newDescription) {
-         editorRef.current.innerHTML = newDescription;
-      }
-   }, [newDescription]);
-
 
 
    return (
@@ -284,11 +279,12 @@ export default function AddPostForm({
                      ref={editorRef}
                      contentEditable
                      className={styles.editor}
-                     onInput={() => {
-                        if (editorRef.current) {
-                           setNewDescription(editorRef.current.innerHTML); // 업데이트된 HTML 값 저장
-                        }
-                     }}
+                     // onInput={() => {
+                     //    if (editorRef.current) {
+                     //       setNewDescription(editorRef.current.innerHTML); // 업데이트된 HTML 값 저장
+                     //    }
+                     // }}
+                     onInput={(e) => setNewDescription((e.target as HTMLDivElement).innerHTML || '')}
                   />
                </div>
             </div>
