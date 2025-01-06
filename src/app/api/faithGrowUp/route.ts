@@ -1,12 +1,15 @@
 import connectMongoDB from '@/libs/mongodb';
 import Board from '@/models/board';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
-export async function GET() {
+export async function GET(req:NextRequest) {
    try {
       await connectMongoDB();
-      const boards = await Board.find({categorie:'신앙 성장을 위한 참고자료'}).sort({ createdAt: -1 })
-      return NextResponse.json(boards);
+      const {searchParams} = new URL(req.url);
+      const page = parseInt(searchParams.get('page') || '1', 10);
+      const totalPage = Math.ceil(await Board.find({categorie:'신앙 성장을 위한 참고자료'}).sort({ createdAt: -1 }).countDocuments()/5)//전체 페이지수
+      const boards = await Board.find({categorie:'신앙 성장을 위한 참고자료'}).sort({ createdAt: -1 }).skip((page-1)*5).limit(5)
+      return NextResponse.json({boards,page,totalPage});
    } catch (error) {
       console.log(error)
       console.error('Error fetch dics')

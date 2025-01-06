@@ -16,7 +16,7 @@ export default function Page() {
          <div><Header /></div>
          <div>
             <div className='flex text-center justify-center border-b border-gray-400 bg-slate-100'>
-               <div className={styles.menu}><Link href={'./allBoard'}>전체</Link></div>
+               <div className={styles.menu}><Link href={'./allBoard?page=1'}>전체</Link></div>
                <div className={styles.menu}><Link href={'./introduction'}>회복의 교회 청년부 소개</Link></div>
                <div className={styles.menu}><Link href={'./column'}>목사님 칼럼</Link></div>
                <div className={styles.menu}><Link href={'./faithGrowUp'}>신앙 성장을 위한 참고자료</Link></div>

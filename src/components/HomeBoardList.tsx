@@ -18,7 +18,7 @@ export default function HomeBoardList() {
    const filterImagesFromHTML = (html: string) => {
       // DOMPurify 사용하여 HTML 정화 및 이미지 태그 제거
       const cleanHtml = DOMPurify.sanitize(html, {
-         FORBID_TAGS: ['img', 'div', 'span', 'b', 's', 'u', 'h1', 'h2', 'br', 'p'], // 특정 태그를 제거
+         FORBID_TAGS: ['img', 'div', 'span', 'b', 's', 'u', 'h1', 'h2', 'br', 'p','font'], // 특정 태그를 제거
       });
       return cleanHtml;
    };

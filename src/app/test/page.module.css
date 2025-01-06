@@ -1,0 +1,30 @@
+.list{
+   border: 1px solid gray;
+   border-radius: 10px;
+   transition: all 0.2s;
+   padding: 10px;
+   padding-left: 15px;
+   padding-right: 15px;
+   margin: 10px;
+   background-color: rgb(243, 247, 255);
+}
+
+.description {
+   white-space: normal;
+   display: -webkit-box;
+   -webkit-line-clamp: 3;
+   -webkit-box-orient: vertical;
+   overflow: hidden;
+   color: gray;
+   font-size: 13px;
+   padding-left: 3px;
+}
+.description:hover {
+   color: black;
+   text-decoration: underline;
+}
+.categorie {
+   font-size: 10px;
+   font-weight: bold;
+   color: gray;
+}

@@ -28,7 +28,7 @@ export default function Home() {
       <div className={styles.homeboardList}>
         <div className="flex">
           <h1 className={styles.boardTitle}>최신 게시판</h1>
-          <Link href={'./allBoard'} className={styles.btn1}>전체보기</Link>
+          <Link href={'./allBoard?page=1'} className={styles.btn1}>전체보기</Link>
         </div>
         <HomeBoardList />
       </div>

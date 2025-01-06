@@ -10,7 +10,7 @@ export async function GET() {
       const userBoard = await Board.find({
          user: `${session?.user?.name}`,
          categorie: { $ne: "앨범" }
-      });
+      }).sort({createdAt:-1});
       return NextResponse.json(userBoard);
    } catch (error) {
       console.log(error)
