@@ -16,14 +16,13 @@
    padding-right: 10px;
    background-color: rgb(243, 247, 255);
    width: 200px;
-   height: 240px;
+   height: 260px;
    /* margin: 10px; */
    gap: 10px;
    margin-top: 10px;
 }
 .list:hover {
    text-decoration: underline;
-   transform: scale(1.1);
 }
 .image {
    height: 160px;
@@ -59,7 +58,7 @@
       padding-right: 10px;
       background-color: rgb(243, 247, 255);
       width: 173px;
-      height: 200px;
+      height: 210px;
       /* margin: 10px; */
       gap: 7px;
       margin-top: 10px;
@@ -105,4 +104,12 @@
 .pagination4:hover{
    background-color: rgb(0, 0, 0);
    color: white;
+}
+
+.name,.clock {
+   font-size: 10px;
+}
+.clock {
+   border-bottom: 1px dashed gray;
+   margin-bottom: 2px;
 }

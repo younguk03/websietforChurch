@@ -33,7 +33,7 @@ export default function AddPostForm() {
          setDescription(editorRef.current.innerHTML); // HTML 콘텐츠 저장
       }
       try {
-         await createBoard(title, description, '', categorie, user);
+         await createBoard(title, description, [], categorie, user);
          router.push('/');
       } catch (error) {
          console.error('글 생성 중 오류', error);

@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 import styles from './allBoard.module.css'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import Bookmark from './Bookmark'
 
 export default function AllBoard() {
    const [boardData, setBoardData] = useState<Board[]>([])
@@ -51,7 +52,7 @@ export default function AllBoard() {
          <div className={styles.listmain}>
          {boardData.map((board) => (
             <div key={board._id} className={styles.bigList}>
-               <Link href={`./board/${board._id}`}>
+               
                   <div className={styles.list}>
                      <div className='flex'>
                         <h2 className='font-bold'>{board.title}</h2>
@@ -59,14 +60,15 @@ export default function AllBoard() {
                         <p className='text-gray-600 text-xs pt-1 pl-3 ml-auto'>
                            작성일: {new Date(board.createdAt).toLocaleString()}
                            </p>
+                           <Bookmark bookmark={board.bookmark} id={board._id} categorie={board.categorie} user={board.user} description={board.description} title={board.title}/>
                      </div>
                      {/* <div dangerouslySetInnerHTML={{ __html: board.description }} /> */}
                      <div>
-                        <div><div dangerouslySetInnerHTML={{ __html: filterImagesFromHTML(board.description) }} className={styles.description} />
-                        </div></div>
+                        <div><Link href={`./board/${board._id}`}><div dangerouslySetInnerHTML={{ __html: filterImagesFromHTML(board.description) }} className={styles.description} /></Link></div>
+                        </div>
                      <div className={styles.categorie}>카테고리: {board.categorie}</div>
                   </div>
-               </Link>
+               
             </div>
          ))}
          </div>

@@ -18,7 +18,6 @@
 }
 .list:hover {
    text-decoration: underline;
-   transform: scale(1.1);
 }
 .image {
    height: 160px;
@@ -35,7 +34,7 @@
       padding-right: 10px;
       background-color: rgb(243, 247, 255);
       width: 173px;
-      height: 200px;
+      height: 210px;
       /* margin: 10px; */
       gap: 7px;
       margin-top: 10px;
@@ -64,4 +63,11 @@
    color: gray;
    font-size: 12px;
    padding-left: 7px;
+}
+.name,.clock {
+   font-size: 10px;
+}
+.clock {
+   border-bottom: 1px dashed gray;
+   margin-bottom: 2px;
 }

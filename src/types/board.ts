@@ -4,7 +4,7 @@ export interface Board {
    description: string
    categorie:string
    user:string
-   imgUpload:string
+   bookmark:string[]
    createdAt: string
    updatadAt: string
 }

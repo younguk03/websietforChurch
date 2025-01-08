@@ -50,7 +50,7 @@ export default function EditAlbumForm({
          setNewDescription(content); // HTML 콘텐츠 저장
       }
       try {
-         await updateBoard(id, newTitle, newDescription, '', categorie, user);
+         await updateBoard(id, newTitle, newDescription, [], categorie, user);
          router.push('/');
       } catch (error) {
          console.error('글 생성 중 오류', error);

@@ -5,10 +5,10 @@ import Board from "@/models/board";
 import { revalidatePath } from "next/cache";
 
 //1. create 
-export async function createBoard(title: string, description: string, imgUpload:string, categorie: string, user: string) {
+export async function createBoard(title: string, description: string, bookmark:string[], categorie: string, user: string) {
    try {
       await connectMongoDB()
-      const doc = await Board.create({ title, description,imgUpload, categorie, user })
+      const doc = await Board.create({ title, description,bookmark, categorie, user })
       revalidatePath('/')
       return { success: true, board: convertDocToObj(doc) }
    } catch (error) {
@@ -18,12 +18,12 @@ export async function createBoard(title: string, description: string, imgUpload:
 
 
 // 2. Edit 
-export async function updateBoard(id:string, title: string, description: string, imgUpload:string, categorie: string, user: string) {
+export async function updateBoard(id:string, title: string, description: string, bookmark:string[], categorie: string, user: string) {
    try {
       await connectMongoDB()
       const doc = await Board.findByIdAndUpdate(
          id,
-         { title, description,imgUpload, categorie, user },
+         { title, description,bookmark, categorie, user },
          { new: true }
       )
       if (!doc) throw new Error('토픽을 찾을 수 없습니다.')

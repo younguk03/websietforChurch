@@ -5,7 +5,7 @@ const boardSchame = new Schema({
    description: String,
    categorie: String,
    user: String,
-   imgUpload:String,
+   bookmark:[String],
 }, {timestamps:true})
 
 const Board = mongoose.models.Board || mongoose.model('Board',boardSchame);

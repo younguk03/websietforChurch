@@ -4,6 +4,7 @@ import DOMPurify from 'dompurify'
 import React, { useEffect, useState } from 'react'
 import styles from './homeBoardList.module.css'
 import Link from 'next/link'
+import Bookmark from './Bookmark'
 
 export default function HomeBoardList() {
    const [boardData, setBoardData] = useState<Board[]>([])
@@ -23,10 +24,10 @@ export default function HomeBoardList() {
       return cleanHtml;
    };
    return (
-      <>
-         {boardData.map((board) => (
+      <div>
+         { boardData.map((board) => (
             <div key={board._id} className={styles.bigList}>
-               <Link href={`./board/${board._id}`}>
+               
                   <div className={styles.list}>
                      <div className='flex'>
                         <h2 className='font-bold'>{board.title}</h2>
@@ -34,16 +35,19 @@ export default function HomeBoardList() {
                         <p className='text-gray-600 text-xs pt-1 pl-3 ml-auto'>
                            작성일: {new Date(board.createdAt).toLocaleString()}
                         </p>
+                        <Bookmark bookmark={board.bookmark} id={board._id} categorie={board.categorie} user={board.user} description={board.description} title={board.title}/>
                      </div>
                      {/* <div dangerouslySetInnerHTML={{ __html: board.description }} /> */}
                      <div>
-                        <div><div dangerouslySetInnerHTML={{ __html: filterImagesFromHTML(board.description) }} className={styles.description} />
-                        </div></div>
+                        <div>
+                           <Link href={`./board/${board._id}`}><div dangerouslySetInnerHTML={{ __html: filterImagesFromHTML(board.description) }} className={styles.description} />
+                        </Link></div></div>
                      <div className={styles.categorie}>카테고리: {board.categorie}</div>
+                     
                   </div>
-               </Link>
+               
             </div>
          ))}
-      </>
+      </div>
    )
 }
