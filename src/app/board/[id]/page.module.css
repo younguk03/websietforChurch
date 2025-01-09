@@ -32,3 +32,34 @@
    margin-right: 8px;
    margin-bottom: 200px;
 }
+.bookmark {
+   margin-left: auto;
+   margin-top: 28px;
+}
+
+.edit_icon {
+   margin-top: 28px;
+   margin-left: auto;
+   border: 2px solid rgb(0, 0, 0);
+   padding: 2px;
+   margin-bottom: 15px;
+   height: 33px;
+   border-radius: 5px;
+   transition: all 0.2s;
+}
+.edit_icon:hover {
+   background-color: rgb(183, 183, 183);
+}
+.removeBtn {
+   margin-top: 28px;
+   border: solid 2px black;
+   height: 33px;
+   padding: 2px;
+   margin-left: 8px;
+   border-radius: 5px;
+   background-color: rgb(240, 47, 47);
+   transition: all 0.2s;
+}
+.removeBtn:hover{
+   background-color: rgb(164, 38, 38);
+}

@@ -8,7 +8,7 @@ export function convertDocToObj(board:Board){
       title:board.title,
       description:board.description,
       categorie:board.categorie,
-      imgUpload:board.imgUpload,
+      bookmark:board.bookmark,
       user:board.user,
    }
 }

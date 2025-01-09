@@ -24,7 +24,7 @@ export default function HomeAlbumList() {
 
    useEffect(() => {
       const fetchData = async (page: number) => {
-         const response = await fetch(`/api/myAlbum?page=${page}`)
+         const response = await fetch(`/api/bookmarkAlbum?page=${page}`)
          const data = await response.json();
 
          setAlbumData(data.boards)
@@ -39,7 +39,7 @@ export default function HomeAlbumList() {
    }
    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      router.push(`myAlbum?page=${encodeURIComponent(currentPages)}`);
+      router.push(`bookmarkAlbum?page=${encodeURIComponent(currentPages)}`);
    }
    // HTML에서 첫 번째 이미지 태그의 src 추출
    const extractFirstImage = (html: string) => {
@@ -54,28 +54,26 @@ export default function HomeAlbumList() {
             <Header />
          </div>
          <div className={styles.main2}>
-            <div>
-               <ProfileForm/>
-            </div>
+            <ProfileForm/>
             <div>
                <div className='mt-9 flex'>
                   <div className={styles.menu}>
                      <h1 className={styles.menuTitle}>메뉴</h1>
                      <ul className={styles.menuUl}>
-                        <Link href={'./bookmarkAlbum'}>
+                        <Link href={'./myPage'}>
                            <li className='mt-1 p-2 transition-all hover:bg-gray-200 '>나의 게시글</li></Link>
                         <Link href={'./myAlbum'}>
-                           <li className='mt-1 p-2 transition-all hover:bg-gray-200 text-blue-600'>나의 앨범</li>
+                           <li className='mt-1 p-2 transition-all hover:bg-gray-200 '>나의 앨범</li>
                         </Link>
                         <Link href={'./bookmarkBoard'}>
                            <li className='mt-1 p-2 transition-all hover:bg-gray-200'>북마크한 게시글</li>
                         </Link>
-                        <Link href={'./myPage'}>
-                           <li className='mt-1 p-2 transition-all hover:bg-gray-200'>북마크한 앨범</li></Link>
+                        <Link href={'./bookmarkAlbum'}>
+                           <li className='mt-1 p-2 transition-all hover:bg-gray-200 text-blue-600'>북마크한 앨범</li></Link>
                      </ul>
                   </div>
                   <div className={styles.myBoard}>
-                     <h1 className=' text-2xl font-bold pl-3'>내가 쓴 글</h1>
+                     <h1 className=' text-2xl font-bold pl-3'>북마크한 앨범</h1>
                      <div className={styles.display}>
                         {albumData && albumData.map((album) => (
                            <div key={album._id}>

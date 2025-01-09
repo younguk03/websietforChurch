@@ -2,20 +2,15 @@
 import Header from '@/components/Header'
 import React, { useEffect, useState } from 'react'
 import styles from './page.module.css'
-import { useSession } from 'next-auth/react'
-import Image from 'next/image'
 import { Board } from '@/types/board'
 import Link from 'next/link'
 import DOMPurify from 'dompurify'
-import default_avata from '@/public/default-avatar.png'
 import Bookmark from '@/components/Bookmark'
 import { useRouter } from 'next/navigation'
+import ProfileForm from '@/components/ProfileForm'
 
 
 export default function Page() {
-   const session = useSession()
-   const [count1, setCount1] = useState<number | null>(null)
-   const [count2, setCount2] = useState<number | null>(null)
    const [boardData, setBoardData] = useState<Board[]>([])
    const [totalPages,setTotalPages] = useState(1)
    const [currentPages,setCurrentPages] = useState(1)
@@ -27,24 +22,6 @@ export default function Page() {
    const startPage = (currentGroup - 1) * groupSize + 1; // 현재 그룹의 시작 페이지
    const endPage = Math.min(startPage + groupSize - 1, totalPages); // 현재 그룹의 끝 페이지
 
-   useEffect(() => {
-      const fetchData = async () => {
-         const response = await fetch('/api/writingCount')
-         const data = await response.json();
-         setCount1(data);
-      }
-      fetchData()
-      
-   },[])
-   useEffect(() => {
-      const fetchData3 = async () => {
-         const response = await fetch('/api/albumcount')
-         const data = await response.json();
-         setCount2(data);
-      }
-      fetchData3()
-      
-   },[])
    useEffect(() => {
       const fetchData2 = async (page:number) => {
          const response = await fetch(`/api/bookmarkBoard?page=${page}`)
@@ -79,26 +56,7 @@ export default function Page() {
             <Header/>
          </div>
          <div className={styles.main2}>
-            <h1 className='text-2xl pb-3 font-bold'>My profile</h1>
-            <div className={styles.profile}>
-               <div>
-                  <Image src={session.data?.user?.image ?? default_avata} width={100} height={100} className={styles.image} alt='image'/>
-               </div>
-               <div className='mt-3'>
-                  <p>이름: {session.data?.user?.name}</p>
-                  <p>게시글 작성 개수: {count1}</p>
-                  <p>앨범 작성 개수: {count2}</p>
-                  
-               </div>
-               <div className='ml-auto'>
-                  <div className={styles.append1}>
-                  <Link href={'/addBoard'}>게시글 작성</Link>
-                  </div>
-                  <div className={styles.append1}>
-                  <Link href={'/addAlbum'}>앨범 작성</Link>
-                  </div>
-               </div>
-            </div>
+            <ProfileForm/>
             <div>
                <div className='mt-9 flex'>
                   <div className={styles.menu}>
@@ -112,8 +70,8 @@ export default function Page() {
                         <Link href={'./bookmarkBoard'}>
                         <li className='mt-1 p-2 transition-all hover:bg-gray-200 text-blue-600'>북마크한 게시글</li>
                         </Link>
-                        <Link href={'./myPage'}>
-                        <li className='mt-1 p-2 transition-all hover:bg-gray-200'>북마크한 앨범</li></Link>
+                        <Link href={'./bookmarkAlbum'}>
+                        <li className='mt-1 p-2 transition-all hover:bg-gray-200' >북마크한 앨범</li></Link>
                      </ul>
                   </div>
                   <div className={styles.myBoard}>

@@ -11,6 +11,13 @@
    margin-left: 10%;
    margin-right: 10%;
 }
+.image1 {
+   border: 2px solid black;
+   border-radius: 100%;
+   width: 100px;
+   height: 100px;
+   margin-right: 30px;
+}
 
 .menu {
    border: 1px solid rgb(195, 192, 192);

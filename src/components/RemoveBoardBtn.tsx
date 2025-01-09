@@ -2,9 +2,8 @@
 import React from 'react'
 // import style from './remove.module.css'
 import { deleteBoard } from '@/actions/actions'
-import Image from 'next/image'
-import trash from '@/public/image/trash_icon.png'
 import { useRouter } from 'next/navigation'
+import { FaRegTrashCan } from 'react-icons/fa6'
 
 
 export default function RemoveBtn({id}: {id:string}) {
@@ -22,6 +21,6 @@ export default function RemoveBtn({id}: {id:string}) {
       }
    }
    return (
-      <div onClick={handleRemove}><Image src={trash} height={30} alt='delete' className='bg-red-600 hover:bg-red-700 rounded-sm' /></div>
+      <div onClick={handleRemove}><FaRegTrashCan color='black' size={25}/></div>
    )
 }

@@ -7,6 +7,13 @@
       width: 1000px;
    }
 }
+.image1 {
+   border: 2px solid black;
+   border-radius: 100%;
+   width: 100px;
+   height: 100px;
+   margin-right: 30px;
+}
 
 .main2 {
    margin: 40px;

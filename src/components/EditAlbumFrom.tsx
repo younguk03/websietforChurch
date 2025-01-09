@@ -10,12 +10,14 @@ interface EditBoardFormProps {
    id: string,
    title: string,
    description: string,
+   bookmark:string[]
 }
 
 export default function EditAlbumForm({
    id,
    title,
    description,
+   bookmark
 }: EditBoardFormProps) {
    const { data: session } = useSession()
    const [newTitle, setNewTitle] = useState(title);
@@ -50,7 +52,7 @@ export default function EditAlbumForm({
          setNewDescription(content); // HTML 콘텐츠 저장
       }
       try {
-         await updateBoard(id, newTitle, newDescription, [], categorie, user);
+         await updateBoard(id, newTitle, newDescription, bookmark, categorie, user);
          router.push('/');
       } catch (error) {
          console.error('글 생성 중 오류', error);
@@ -256,7 +258,7 @@ export default function EditAlbumForm({
                <div className={styles.one}>
                   <input
                      type="text"
-                     value={title}
+                     value={newTitle}
                      onChange={(e) => setNewTitle(e.target.value)}
                      placeholder="제목"
                      className={styles.title}
@@ -276,11 +278,6 @@ export default function EditAlbumForm({
                      }}
                   />
                </div>
-            </div>
-            <div className='border-t pt-3'>
-               {/* <button type="submit" className={styles.submit}>
-                  글 추가
-               </button> */}
             </div>
          </form>
       </div>

@@ -17,6 +17,7 @@ export default async function EditBoard({ params }: Props) {
             title={board.title}
             description={board.description}
             categorie={board.categorie}
+            bookmark={board.bookmark}
          />
       </div>
    )

@@ -1,4 +1,4 @@
-
+'use client'
 import { updateBoard } from '@/actions/actions';
 import { useSession } from 'next-auth/react';
 import React, { useEffect, useState } from 'react'
@@ -12,14 +12,16 @@ interface Board {
    categorie:string;
    user:string;
 }
+
 export default function Bookmark({
    id,
    bookmark,
    title,
    description,
    categorie,
-   user
-}: Board) {
+   user,
+   size = 16,
+}: Board&{size?:number}) {
    const { data: session } = useSession();
    const [isBookmark, setBookmark] = useState(bookmark.includes(session?.user?.name || ''));
 
@@ -60,8 +62,8 @@ export default function Bookmark({
    return (
       <div>
          <form onClick={handleSubmit}>
-         <button type='submit' className='ml-2'>
-            {isBookmark ? (<div><FaBookmark color='#4690ea'/></div>) : (<div><FaBookmark color='#bdbdbd'/></div>) }
+         <button type='submit' className='ml-2' name='bookmark'>
+            {isBookmark ? (<div><FaBookmark color='#4690ea' size={size}/></div>) : (<div><FaBookmark color='#bdbdbd' size={size}/></div>) }
          </button>
          </form>
       </div>

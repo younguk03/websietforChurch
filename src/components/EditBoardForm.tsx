@@ -10,7 +10,8 @@ interface EditBoardFormProps {
    id: string,
    title: string,
    description: string,
-   categorie: string
+   categorie: string,
+   bookmark:string[]
 }
 
 export default function EditBoardtForm({
@@ -18,6 +19,7 @@ export default function EditBoardtForm({
    title,
    description,
    categorie,
+   bookmark
 }: EditBoardFormProps) {
    const { data: session } = useSession()
    const [newTitle, setNewTitle] = useState(title);
@@ -45,7 +47,7 @@ export default function EditBoardtForm({
          setNewDescription(editorRef.current.innerHTML); // HTML 콘텐츠 저장
       }
       try {
-         await updateBoard(id, newTitle, newDescription, [], newCategorie, user);
+         await updateBoard(id, newTitle, newDescription, bookmark, newCategorie, user);
          router.push('/');
       } catch (error) {
          console.error('글 생성 중 오류', error);
@@ -266,7 +268,7 @@ export default function EditBoardtForm({
                <div className={styles.one}>
                   <input
                      type="text"
-                     value={title}
+                     value={newTitle}
                      onChange={(e) => setNewTitle(e.target.value)}
                      placeholder="제목"
                      className={styles.title}

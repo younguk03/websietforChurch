@@ -16,6 +16,7 @@ export default async function EditAlbum({ params }: Props) {
             id={board._id}
             title={board.title}
             description={board.description}
+            bookmark = {board.bookmark}
          />
       </div>
    )

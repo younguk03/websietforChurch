@@ -1,0 +1,31 @@
+.profile {
+   border: 1px solid rgb(49, 49, 49);
+   display: flex;
+   padding: 30px;
+   border-radius: 5px;
+   margin-left: 10px;
+   margin-right: 10px;
+   background-color: rgb(214, 235, 255);
+}
+
+.image {
+   border: 2px solid black;
+   border-radius: 100%;
+   width: 100px;
+   height: 100px;
+   margin-right: 30px;
+}
+
+.append{
+   border: 1px solid;
+   text-align: center;
+   width: 150px;
+   padding: 8px;
+   border-radius: 5px;
+   background-color: rgb(173, 195, 216);
+   margin: 5px;
+   transition: all 0.3s;
+}
+.append:hover {
+   background-color: rgb(118, 136, 153);
+}
