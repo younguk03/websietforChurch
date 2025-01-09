@@ -47,7 +47,7 @@ export default function Page() {
    },[])
    useEffect(() => {
       const fetchData2 = async (page:number) => {
-         const response = await fetch(`/api/myBoard?page=${page}`)
+         const response = await fetch(`/api/bookmarkBoard?page=${page}`)
          const data = await response.json()
          setCurrentPages(data.page)
          setTotalPages(data.totalPage)
@@ -62,7 +62,7 @@ export default function Page() {
 
    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      router.push(`/myPage?page=${encodeURIComponent(currentPages)}`);
+      router.push(`/bookmarkBoard?page=${encodeURIComponent(currentPages)}`);
    }
 
    
@@ -105,19 +105,19 @@ export default function Page() {
                      <h1 className={styles.menuTitle}>메뉴</h1>
                      <ul className={styles.menuUl}>
                         <Link href={'./myPage'}>
-                        <li className='mt-1 p-2 transition-all hover:bg-gray-200 text-blue-600'>나의 게시글</li></Link>
+                        <li className='mt-1 p-2 transition-all hover:bg-gray-200 '>나의 게시글</li></Link>
                         <Link href={'./myAlbum'}>
                         <li className='mt-1 p-2 transition-all hover:bg-gray-200'>나의 앨범</li>
                         </Link>
                         <Link href={'./bookmarkBoard'}>
-                        <li className='mt-1 p-2 transition-all hover:bg-gray-200'>북마크한 게시글</li>
+                        <li className='mt-1 p-2 transition-all hover:bg-gray-200 text-blue-600'>북마크한 게시글</li>
                         </Link>
                         <Link href={'./myPage'}>
                         <li className='mt-1 p-2 transition-all hover:bg-gray-200'>북마크한 앨범</li></Link>
                      </ul>
                   </div>
                   <div className={styles.myBoard}>
-                  <h1 className=' text-2xl font-bold pl-3'>내가 쓴 글</h1>
+                  <h1 className=' text-2xl font-bold pl-3'>북마크한 게시글</h1>
                {boardData&&boardData.map((board) => (
                   <div key={board._id} className={styles.bigList}>
                   
