@@ -27,7 +27,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
+  return (<PageTransition>
+          <SessionProvider>
     <html lang="en">
       <head>
         <title>회복의 교회 청년부</title>
@@ -35,13 +36,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <PageTransition>
-          <SessionProvider>
+        
             {children}
             <Analytics/>
-          </SessionProvider>
-        </PageTransition>
+          
+        
       </body>
-    </html>
+    </html></SessionProvider></PageTransition>
   );
 }

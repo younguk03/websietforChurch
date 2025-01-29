@@ -1,4 +1,4 @@
-import { auth } from '@/auth';
+import { auth } from '@/app/api/auth/[...nextauth]/route';
 import connectMongoDB from '@/libs/mongodb';
 import Board from '@/models/board';
 import { NextRequest, NextResponse } from 'next/server';

@@ -23,6 +23,7 @@
 }
 .list:hover {
    text-decoration: underline;
+   box-shadow: 2px 2px 2px 2px rgb(179, 179, 179);
 }
 .image {
    height: 160px;

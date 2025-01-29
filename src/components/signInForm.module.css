@@ -1,0 +1,36 @@
+.name {
+   /* height: 44px; */
+   width: 248px;
+   border: 1px solid rgb(173, 173, 173);
+   outline: none;
+   margin-bottom: 8px;
+   padding: 10px;
+   /* border-radius: 5px; */
+}
+
+.password {
+   width: 248px;
+   border: 1px solid rgb(173, 173, 173);
+   outline: none;
+   margin-bottom: 8px;
+   padding: 10px;
+   /* border-radius: 5px; */
+}
+
+.button {
+   border: 1px solid rgb(173, 173, 173);
+   width: 248px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 5px;
+   /* border-radius: 9px; */
+   background-color: white;
+   height: 47px;
+   transition: all 0.3s;
+   background-color: rgb(255, 255, 255);
+}
+.button:hover {
+   background-color: black;
+   color: white;
+}

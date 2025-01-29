@@ -9,6 +9,7 @@
    margin-left: 40px;
 }
 
+
 .right {
    margin-left: auto;
    margin-top: 15px;
@@ -18,6 +19,13 @@
    outline: none;
    height: 17px;
    margin-top: 10px;
+   padding-left: 6px;
+}
+
+.searchInput_form {
+   padding-bottom: 4px;
+   border-bottom: 4px solid;
+   display: flex;
 }
 
 .search_logo {
@@ -54,7 +62,44 @@
    font-size: small;
 }
 
-.icon {
+@media (prefers-color-scheme: dark) {
+   .image {
+      filter: invert();
+      /*색상반전*/
+   }
+
+   .login {
+      background-color: white;
+      color: black;
+   }
+
+   .logout {
+      background-color: white;
+      color: black;
+   }
+
+   .searchInput {
+      background-color: black;
+      color: white;
+   }
+
+   .search_logo {
+      filter: invert();
+   }
+
+   .searchInput_form {
+      border-bottom: 4px solid white;
+   }
+}
+
+.icon1 {
+   border-radius: 100%;
+   margin-right: 15px;
+   margin-top: 12px;
+   height: 45px;
+}
+
+.icon2 {
    border-radius: 100%;
    margin-right: 15px;
    margin-top: 12px;

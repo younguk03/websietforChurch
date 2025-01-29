@@ -14,7 +14,7 @@ export default function Home() {
         <Header />
       </div>
       <div>
-        <div className='flex text-center justify-center border-b border-gray-400 bg-slate-100'>
+        <div className='flex text-center justify-center border-b border-gray-400 bg-slate-100 text-black'>
           <div className={styles.menu}><Link href={'./allBoard'}>전체</Link></div>
           <div className={styles.menu}><Link href={'./introduction'}>회복의 교회 청년부 소개</Link></div>
           <div className={styles.menu}><Link href={'./column'}>목사님 칼럼</Link></div>

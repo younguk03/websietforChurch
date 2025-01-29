@@ -1,4 +1,5 @@
 import { Board } from "@/types/board";
+import { User } from "@/types/user";
 
 
 
@@ -10,5 +11,14 @@ export function convertDocToObj(board:Board){
       categorie:board.categorie,
       bookmark:board.bookmark,
       user:board.user,
+   }
+}
+
+export function convertUserToObj(user:User) {
+   return {
+      _id:user._id.toString(),
+      name:user.name,
+      email:user.email,
+      password:user.password
    }
 }

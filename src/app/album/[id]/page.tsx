@@ -1,7 +1,7 @@
 import React from 'react'
 import style from './page.module.css'
 import Header from '@/components/Header';
-import { auth } from '@/auth';
+import { auth } from '@/app/api/auth/[...nextauth]/route';
 import Link from 'next/link';
 import { getBoard } from '@/actions/actions';
 import AutoLink from './AutoLink';

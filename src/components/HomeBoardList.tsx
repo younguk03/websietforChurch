@@ -30,7 +30,7 @@ export default function HomeBoardList() {
                
                   <div className={styles.list}>
                      <div className='flex'>
-                        <h2 className='font-bold'>{board.title}</h2>
+                        <h2 className='font-bold text-black'>{board.title}</h2>
                         <h2 className='text-gray-600 text-xs pt-1 pl-3'>-작성자: {board.user}</h2>
                         <p className='text-gray-600 text-xs pt-1 pl-3 ml-auto'>
                            작성일: {new Date(board.createdAt).toLocaleString()}

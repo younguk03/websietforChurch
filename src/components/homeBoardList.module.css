@@ -18,6 +18,7 @@
    color: gray;
    font-size: 13px;
    padding-left: 3px;
+   transition: all 0.3s;
 }
 .description:hover {
    color: black;

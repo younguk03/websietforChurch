@@ -7,6 +7,7 @@ import searchLogo from '@/public/search-logo.png'
 import Link from 'next/link'
 import { signOut, useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
+import { RxAvatar } from 'react-icons/rx'
 
 export default function Header() {
    const { status, data: session } = useSession()
@@ -27,8 +28,8 @@ export default function Header() {
          <div className={styles.right}>
             <span>
 
-               <form action="./searchBoard" className=' pb-1 border-b-4 border-black flex' onSubmit={handleSubmit}>
-                  <input type="text"  className={styles.searchInput} placeholder='게시글 검색'  onChange={(e) => setInputValue(e.target.value)}/>
+               <form action="./searchBoard" className={styles.searchInput_form} onSubmit={handleSubmit}>
+                  <input type="text" className={styles.searchInput} placeholder='게시글 검색' onChange={(e) => setInputValue(e.target.value)} />
                   <button className={styles.search_logo}>
                      <Image src={searchLogo} alt='logo' width={23} />
                   </button>
@@ -36,21 +37,32 @@ export default function Header() {
             </span>
          </div>
          {status == 'authenticated' ? (
-            <>
-               <div className='flex'>
-                  
-                  <button className={styles.logout} onClick={() => signOut()}>
-                     로그아웃
-                  </button>
-                  <span className='mt-6 mr-3 font-bold'>{session?.user?.name}</span>
-                  <Link href={'/myPage'}>
-                  <Image src={session?.user?.image ?? '/default-avatar.png'} width={45} height={45} alt='user' 
-                  className={styles.icon}
-                  style={{objectFit:'cover'}}
-                  />
-                  </Link>
-               </div>
-            </>
+            <div>
+               {session.user?.image ? (
+                  <div className='flex'>
+                     <button className={styles.logout} onClick={() => signOut()}>
+                        로그아웃
+                     </button>
+                     <Link href={'/myPage'} className='flex'>
+                        <span className='mt-6 mr-3 font-bold'>{session?.user?.name}</span>
+                        <Image src={session?.user?.image ?? '/default-avatar.png'} width={45} height={45} alt='user'
+                           className={styles.icon1}
+                           style={{ objectFit: 'cover' }}
+                        />
+                     </Link>
+                  </div>
+               ) : (
+                  <div className='flex'>
+                     <button className={styles.logout} onClick={() => signOut()}>
+                        로그아웃
+                     </button>
+                     <Link href={'/myPage'} className='flex'>
+                        <span className='mt-6 mr-2 font-bold'>{session?.user?.name}</span>
+                        <RxAvatar size={45} className={styles.icon2} />
+                     </Link>
+                  </div>
+               )}
+            </div>
          ) : (
             <Link href={'./login'} className={styles.login}>
                로그인

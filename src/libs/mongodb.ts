@@ -1,3 +1,5 @@
+export const runtime = "nodejs";
+
 import mongoose from "mongoose";
 
 export default async function connectMongoDB() {
@@ -9,3 +11,4 @@ export default async function connectMongoDB() {
       console.log(error);
    }
 }
+

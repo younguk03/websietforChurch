@@ -40,7 +40,7 @@ export default function HomeAlbumList() {
                            />
                         ) : (
                            <p>이미지가 없습니다</p>
-                        )}<h2 className='font-bold pt-1'>{album.title}</h2>
+                        )}<h2 className='font-bold pt-1 text-black'>{album.title}</h2>
                         <h2 className={styles.name}>작성자: {album.user}</h2>
                         <p className={styles.clock}>
                            작성일: {new Date(album.createdAt).toLocaleDateString()}
