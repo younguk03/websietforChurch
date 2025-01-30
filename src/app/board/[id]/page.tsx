@@ -9,6 +9,8 @@ import RemoveBtn from '@/components/RemoveBoardBtn';
 import Bookmark from '@/components/Bookmark';
 import { BiEditAlt } from 'react-icons/bi';
 //Next.js 15부터 params가 비동기적으로 처리되어 Promise를 반환하도록 변경되었다.
+
+
 export default async function page({ params }: { params: Promise<{ id: string }> }) {
    const { id } = await params;
    const { board } = await getBoard(id);
@@ -16,6 +18,7 @@ export default async function page({ params }: { params: Promise<{ id: string }>
 
    return (
       <div className={style.main}>
+         <title>{board.title}</title>
          <div>
             <Header />
          </div>
